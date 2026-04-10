@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book an Event | Cafeology Co</title>
+  <meta name="description" content="Book Cafeology for your next corporate, private, or retail event. Reach out and we'll craft a package around your vision." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ── Contact page specific ── */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      min-height: 680px;
+    }
+    .contact-info {
+      background: var(--espresso);
+      color: var(--white);
+      padding: 80px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .contact-info__eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+    }
+    .contact-info__headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.2vw, 3rem);
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--white);
+      margin-bottom: 28px;
+    }
+    .contact-info__body {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.85;
+      margin-bottom: 48px;
+    }
+    .contact-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      margin-bottom: 56px;
+    }
+    .contact-detail__item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .contact-detail__label {
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .contact-detail__value {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.6;
+    }
+    .contact-detail__value a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact-detail__value a:hover { color: var(--gold); }
+    .contact-quote {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 28px;
+    }
+    .contact-quote__text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-style: italic;
+      font-weight: 300;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.65;
+      margin-bottom: 10px;
+    }
+    .contact-quote__attr {
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.28);
+    }
+
+    /* ── Form panel ── */
+    .contact-form-panel {
+      background: var(--parchment);
+      padding: 80px 70px;
+    }
+    .contact-form-panel__eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rust);
+      margin-bottom: 12px;
+    }
+    .contact-form-panel__headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 2.8vw, 2.6rem);
+      font-weight: 400;
+      line-height: 1.25;
+      color: var(--espresso);
+      margin-bottom: 36px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .form-group--full {
+      grid-column: 1 / -1;
+    }
+    .form-group label {
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #777;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: var(--white);
+      border: 1px solid rgba(0,0,0,0.12);
+      border-radius: 2px;
+      padding: 14px 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      color: var(--espresso);
+      outline: none;
+      transition: border-color 0.2s;
+      box-sizing: border-box;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--espresso);
+    }
+    .form-group select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23111' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 130px;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(0,0,0,0.25);
+    }
+    .form-submit-row {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-top: 32px;
+    }
+    .form-note {
+      font-size: 0.75rem;
+      color: rgba(0,0,0,0.4);
+      line-height: 1.6;
+    }
+
+    /* ── Response promise band ── */
+    .promise-band {
+      background: var(--rust);
+      padding: 56px 0;
+    }
+    .promise-band__inner {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.12);
+    }
+    .promise-band__item {
+      background: var(--rust);
+      padding: 36px 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .promise-band__label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+    }
+    .promise-band__value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--white);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .contact-layout { grid-template-columns: 1fr; }
+      .contact-info { padding: 60px 48px; }
+      .contact-form-panel { padding: 60px 48px; }
+    }
+    @media (max-width: 860px) {
+      .form-row { grid-template-columns: 1fr; }
+      .promise-band__inner { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .contact-info { padding: 48px 24px; }
+      .contact-form-panel { padding: 48px 24px; }
+      .form-submit-row { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav" id="siteNav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo">
+      <img src="assets/images/logo cafeology_Mesa de trabajo 1.png" alt="Cafeology logo" class="nav__logo-img" />
+      <span class="nav__logo-text">Cafeology</span>
+    </a>
+    <ul class="nav__links">
+      <li><a href="index.html">Home</a></li>
+      <li class="nav__item--has-dropdown">
+        <a href="services.html">Services</a>
+        <ul class="nav__dropdown">
+          <li><a href="coffee-trailer.html">Coffee Trailer</a></li>
+          <li><a href="matcha-cart.html">Matcha Cart</a></li>
+          <li><a href="catering.html">Catering</a></li>
+        </ul>
+      </li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="contact.html" class="nav__cta">Book an Event</a></li>
+    </ul>
+    <button class="nav__toggle" id="navToggle" aria-label="Menu">☰</button>
+  </div>
+</nav>
+<ul class="nav__mobile-menu" id="navMobile">
+  <li><a href="index.html">Home</a></li>
+  <li><a href="services.html">Services</a></li>
+  <li class="nav-sub-link"><a href="coffee-trailer.html">Coffee Trailer</a></li>
+  <li class="nav-sub-link"><a href="matcha-cart.html">Matcha Cart</a></li>
+  <li class="nav-sub-link"><a href="catering.html">Catering</a></li>
+  <li><a href="menu.html">Menu</a></li>
+  <li><a href="contact.html">Contact</a></li>
+</ul>
+
+<!-- ═══ PAGE HERO ═══ -->
+<section style="padding-top:var(--nav-h);background:var(--espresso);min-height:52vh;display:grid;grid-template-columns:1fr 1fr;">
+  <div style="display:flex;align-items:center;padding:72px 60px 72px 80px;">
+    <div>
+      <p class="page-hero__eyebrow">Get In Touch</p>
+      <h1 class="page-hero__headline serif">
+        Let's create<br><em>something great.</em>
+      </h1>
+      <p class="page-hero__sub">Tell us about your event. We'll build a package around your vision, your guests, and the experience you want to leave them with.</p>
+    </div>
+  </div>
+  <div style="overflow:hidden;">
+    <img src="assets/images/barista-team-smiling-trailer-window.jpg" alt="Cafeology barista team smiling in the trailer window" loading="eager" style="width:100%;height:100%;object-fit:cover;object-position:center;" />
+  </div>
+</section>
+
+<!-- ═══ CONTACT LAYOUT ═══ -->
+<div class="contact-layout">
+
+  <!-- Left: Info panel -->
+  <div class="contact-info">
+    <div>
+      <p class="contact-info__eyebrow">Reach Out</p>
+      <h2 class="contact-info__headline serif">Every great event<br>starts with a<br><em>conversation.</em></h2>
+      <p class="contact-info__body">We respond to every inquiry personally. Share a few details about your event and we'll get back to you within 24 hours with ideas, options, and a clear path forward.</p>
+
+      <div class="contact-detail">
+        <div class="contact-detail__item">
+          <span class="contact-detail__label">Email</span>
+          <span class="contact-detail__value">
+            <a href="mailto:info@cafeologyco.com">info@cafeologyco.com</a>
+          </span>
+        </div>
+        <div class="contact-detail__item">
+          <span class="contact-detail__label">Availability</span>
+          <span class="contact-detail__value">Corporate, private &amp; retail events<br>year-round across the region</span>
+        </div>
+        <div class="contact-detail__item">
+          <span class="contact-detail__label">What to Expect</span>
+          <span class="contact-detail__value">A reply within 24 hours.<br>A custom package that fits your event.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-quote">
+      <p class="contact-quote__text">"The beginning of wisdom is the definition of terms."</p>
+      <p class="contact-quote__attr">· Socrates · On why the first conversation matters most.</p>
+    </div>
+  </div>
+
+  <!-- Right: Form panel -->
+  <div class="contact-form-panel">
+    <p class="contact-form-panel__eyebrow">Booking Inquiry</p>
+    <h2 class="contact-form-panel__headline serif">Tell us about<br>your <em>event.</em></h2>
+
+    <form id="contactForm" novalidate>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="fname">First Name</label>
+          <input type="text" id="fname" name="first_name" placeholder="Jane" required />
+        </div>
+        <div class="form-group">
+          <label for="lname">Last Name</label>
+          <input type="text" id="lname" name="last_name" placeholder="Smith" required />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="jane@company.com" required />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="(555) 000-0000" />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="event_type">Event Type</label>
+          <select id="event_type" name="event_type" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="corporate">Corporate Event</option>
+            <option value="conference">Conference / Summit</option>
+            <option value="wedding">Wedding</option>
+            <option value="private">Private Celebration</option>
+            <option value="retail">Retail / Pop-up</option>
+            <option value="activation">Brand Activation</option>
+            <option value="retreat">Corporate Retreat</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="service">Service Interested In</label>
+          <select id="service" name="service">
+            <option value="" disabled selected>Select a service</option>
+            <option value="trailer">Coffee Trailer</option>
+            <option value="matcha">Matcha Cart</option>
+            <option value="catering">Full Catering Package</option>
+            <option value="unsure">Not Sure Yet</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="event_date">Event Date</label>
+          <input type="date" id="event_date" name="event_date" />
+        </div>
+        <div class="form-group">
+          <label for="guest_count">Estimated Guest Count</label>
+          <select id="guest_count" name="guest_count">
+            <option value="" disabled selected>Select a range</option>
+            <option value="under_50">Under 50</option>
+            <option value="50_150">50 – 150</option>
+            <option value="150_300">150 – 300</option>
+            <option value="300_500">300 – 500</option>
+            <option value="500_plus">500+</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group form-group--full">
+          <label for="message">Tell Us More</label>
+          <textarea id="message" name="message" placeholder="Share any details about your event: venue, vibe, vision, or questions. The more you tell us, the better we can serve you."></textarea>
+        </div>
+      </div>
+
+      <div class="form-submit-row">
+        <button type="submit" class="btn btn--dark">Send Inquiry</button>
+        <p class="form-note">We respond within 24 hours.<br>No commitment required.</p>
+      </div>
+    </form>
+  </div>
+
+</div>
+
+<!-- ═══ PROMISE BAND ═══ -->
+<div class="promise-band">
+  <div class="container">
+    <div class="promise-band__inner">
+      <div class="promise-band__item">
+        <span class="promise-band__label">Response Time</span>
+        <span class="promise-band__value">Within 24 hours</span>
+      </div>
+      <div class="promise-band__item">
+        <span class="promise-band__label">Our Approach</span>
+        <span class="promise-band__value">Custom to your event</span>
+      </div>
+      <div class="promise-band__item">
+        <span class="promise-band__label">Our Promise</span>
+        <span class="promise-band__value">An experience they'll remember</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FAQ TEASER ═══ -->
+<section class="section section--parchment" style="padding:80px 0">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start">
+      <div>
+        <p class="section__eyebrow">Before You Reach Out</p>
+        <h2 class="section__headline serif">Common<br><em>questions.</em></h2>
+        <p class="section__body">Not sure what to ask for? Here are a few things clients often want to know before booking.</p>
+        <a href="index.html#faq" class="btn btn--outline" style="margin-top:28px;display:inline-block">See All FAQs</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:32px">
+        <div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:500;margin-bottom:8px;color:var(--espresso)">How far in advance should I book?</p>
+          <p style="font-size:0.88rem;color:#666;line-height:1.8">We recommend reaching out at least 2 to 4 weeks before your event, and earlier for large-scale or catering requests. Popular dates fill quickly, so do not wait.</p>
+        </div>
+        <div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:500;margin-bottom:8px;color:var(--espresso)">Do you offer custom drink menus?</p>
+          <p style="font-size:0.88rem;color:#666;line-height:1.8">Absolutely. We can craft a menu around your event's theme, brand colors, or dietary needs, from signature lattes to custom matcha tonics.</p>
+        </div>
+        <div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:500;margin-bottom:8px;color:var(--espresso)">What does the setup look like?</p>
+          <p style="font-size:0.88rem;color:#666;line-height:1.8">We handle arrival, full setup, and breakdown. Our trailer and carts are self-contained. We just need space, power access, and your guest list to plan the right quantities.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CLOSING QUOTE ═══ -->
+<div style="background:var(--espresso);padding:80px 0;text-align:center">
+  <div class="container">
+    <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.8rem);font-style:italic;font-weight:300;color:var(--white);max-width:700px;margin:0 auto;line-height:1.45">
+      "It is not enough to have a good mind. The main thing is to use it well."
+    </p>
+    <p style="font-size:0.75rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-top:20px">
+      · René Descartes · On bringing intention to everything we do.
+    </p>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__logo">
+          <img src="assets/images/logo cafeology_Mesa de trabajo 1.png" alt="Cafeology" class="footer__logo-img" />
+          <span class="footer__logo-text serif">Cafeology</span>
+        </div>
+        <p class="footer__tagline">We do not serve coffee. We serve an experience built on craft, community, and timeless conversation.</p>
+      </div>
+      <div class="footer__col">
+        <p class="footer__col-title">Navigate</p>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <p class="footer__col-title">Services</p>
+        <ul>
+          <li><a href="coffee-trailer.html">Coffee Trailer</a></li>
+          <li><a href="matcha-cart.html">Matcha Cart</a></li>
+          <li><a href="catering.html">Catering Events</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <p class="footer__col-title">Contact</p>
+        <ul>
+          <li><a href="mailto:info@cafeologyco.com">info@cafeologyco.com</a></li>
+          <li><a href="contact.html">Book an Event</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Cafeology Co. All rights reserved.</span>
+      <span class="footer__gold">The Nectar of Gods</span>
+      <span>Website by Blueprint Growth Marketing</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

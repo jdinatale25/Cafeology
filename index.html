@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cafeology Co | The Nectar of Gods</title>
+  <meta name="description" content="Cafeology is a mobile coffee and matcha experience for corporate, retail, and private events. Ancestral Origins. Timeless Flavor." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    /* ── HOME ONLY STYLES ── */
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      padding-top: var(--nav-h);
+      background: var(--espresso);
+      display: grid; grid-template-columns: 1fr 1fr;
+      position: relative;
+    }
+    .hero__left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 80px 60px 80px 80px; z-index: 1;
+    }
+    .hero__eyebrow {
+      font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 28px;
+    }
+    .hero__headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.4rem, 5.5vw, 5.6rem);
+      font-weight: 400; line-height: 1.06; color: var(--white); margin-bottom: 24px;
+    }
+    .hero__headline em { font-style: italic; font-weight: 300; color: var(--gold); }
+    .hero__quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.98rem; font-style: italic; color: rgba(255,255,255,0.45);
+      margin-bottom: 44px; line-height: 1.8; max-width: 400px;
+    }
+    .hero__quote span { display: block; font-style: normal; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-top: 8px; }
+    .hero__actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero__right { position: relative; overflow: hidden; }
+    .hero__right img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; }
+
+    /* INTRO SPLIT */
+    .intro { display: grid; grid-template-columns: 1fr 1fr; }
+    .intro__image { height: 580px; overflow: hidden; }
+    .intro__image img { transition: transform 0.8s ease; }
+    .intro__image:hover img { transform: scale(1.04); }
+    .intro__text {
+      background: var(--parchment); padding: 80px 72px;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+
+    /* VALUES GRID */
+    .values-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+      background: rgba(0,0,0,0.1);
+    }
+    .value-card {
+      background: var(--parchment); padding: 64px 48px;
+    }
+    .value-card__number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem; font-weight: 300; color: rgba(0,0,0,0.08);
+      line-height: 1; margin-bottom: 16px;
+    }
+    .value-card__title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem; font-weight: 400; margin-bottom: 14px; color: var(--espresso);
+    }
+    .value-card__body { font-size: 0.88rem; color: #666; line-height: 1.85; }
+
+    /* PHILOSOPHY BAND */
+    .philosophy-band {
+      background: var(--rust); padding: 80px 0; text-align: center;
+    }
+    .philosophy-band__quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 3.5vw, 3rem); font-weight: 300; font-style: italic;
+      color: var(--white); max-width: 800px; margin: 0 auto; line-height: 1.45;
+    }
+    .philosophy-band__attr {
+      font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(255,255,255,0.5); margin-top: 20px;
+    }
+
+    /* EVENTS PREVIEW */
+    .events-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
+    .event-card { background: var(--white); overflow: hidden; }
+    .event-card__img { height: 260px; overflow: hidden; }
+    .event-card__img img { transition: transform 0.7s ease; }
+    .event-card:hover .event-card__img img { transform: scale(1.06); }
+    .event-card__body { padding: 28px 32px 36px; }
+    .event-card__title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem; margin-bottom: 10px;
+    }
+    .event-card__desc { font-size: 0.85rem; color: #666; line-height: 1.8; margin-bottom: 20px; }
+
+    /* FAQ */
+    .faq-section { max-width: 760px; margin: 0 auto; }
+
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero__left { padding: 60px 24px; }
+      .hero__right { height: 60vw; }
+      .intro { grid-template-columns: 1fr; }
+      .intro__image { height: 60vw; }
+      .intro__text { padding: 56px 32px; }
+      .values-grid { grid-template-columns: 1fr; }
+      .events-grid { grid-template-columns: 1fr; gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav" id="siteNav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo">
+      <img src="assets/images/logo cafeology_Mesa de trabajo 1.png" alt="Cafeology logo" class="nav__logo-img" />
+      <span class="nav__logo-text">Cafeology</span>
+    </a>
+    <ul class="nav__links">
+      <li><a href="index.html">Home</a></li>
+      <li class="nav__item--has-dropdown">
+        <a href="services.html">Services</a>
+        <ul class="nav__dropdown">
+          <li><a href="coffee-trailer.html">Coffee Trailer</a></li>
+          <li><a href="matcha-cart.html">Matcha Cart</a></li>
+          <li><a href="catering.html">Catering</a></li>
+        </ul>
+      </li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="contact.html" class="nav__cta">Book an Event</a></li>
+    </ul>
+    <button class="nav__toggle" id="navToggle" aria-label="Menu">☰</button>
+  </div>
+</nav>
+<ul class="nav__mobile-menu" id="navMobile">
+  <li><a href="index.html">Home</a></li>
+  <li><a href="services.html">Services</a></li>
+  <li class="nav-sub-link"><a href="coffee-trailer.html">Coffee Trailer</a></li>
+  <li class="nav-sub-link"><a href="matcha-cart.html">Matcha Cart</a></li>
+  <li class="nav-sub-link"><a href="catering.html">Catering</a></li>
+  <li><a href="menu.html">Menu</a></li>
+  <li><a href="contact.html">Contact</a></li>
+</ul>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero__left">
+    <p class="hero__eyebrow">Ancestral Origins · Timeless Flavor</p>
+    <h1 class="hero__headline serif">
+      Not just coffee.<br><em>The Nectar</em><br>of Gods.
+    </h1>
+    <p class="hero__quote">
+      "Wonder is the beginning of wisdom."
+      <span>· Socrates</span>
+    </p>
+    <div class="hero__actions">
+      <a href="contact.html" class="btn btn--gold">Book Your Event</a>
+      <a href="services.html" class="btn btn--outline-white">Our Services</a>
+    </div>
+  </div>
+  <div class="hero__right">
+    <img
+      src="assets/images/Product.jpeg"
+      alt="Signature Cafeology drink"
+      loading="eager"
+    />
+  </div>
+</section>
+
+<!-- ═══ MARQUEE ═══ -->
+<div class="marquee-band" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item">Coffee Trailer</span><span class="marquee-dot">●</span>
+    <span class="marquee-item">Matcha Cart</span><span class="marquee-dot">●</span>
+    <span class="marquee-item">Corporate Events</span><span class="marquee-dot">●</span>
+    <span class="marquee-item">Private Gatherings</span><span class="marquee-dot">●</span>
+    <span class="marquee-item">Catering</span><span class="marquee-dot">●</span>
+    <span class="marquee-item">Retail Activations</span><span class="marquee-dot">●</span>
+    <span class="marquee-item">The Nectar of Gods</span><span class="marquee-dot">●</span>
+    <span class="marquee-item">Community &amp; Conversation</span><span class="marquee-dot">●</span>
+    <!-- duplicate for loop -->
+    <span class="marquee-item">Coffee Trailer</span><span class="marquee-dot">●</span>
+    <span class="marquee-item">Matcha Cart</span><span class="marquee-dot">●</span>
+    <span class="marquee-item">Corporate Events</span><span class="marquee-dot">●</span>
+    <span class="marquee-item">Private Gatherings</span><span class="marquee-dot">●</span>
+    <span class="marquee-item">Catering</span><span class="marquee-dot">●</span>
+    <span class="marquee-item">Retail Activations</span><span class="marquee-dot">●</span>
+    <span class="marquee-item">The Nectar of Gods</span><span class="marquee-dot">●</span>
+    <span class="marquee-item">Community &amp; Conversation</span><span class="marquee-dot">●</span>
+  </div>
+</div>
+
+<!-- ═══ INTRO ═══ -->
+<div class="intro">
+  <div class="intro__image">
+    <img src="assets/images/iced-latte-coffee-trailer-daytime.jpg" alt="Iced latte held in front of the Cafeology coffee trailer" loading="lazy" />
+  </div>
+  <div class="intro__text">
+    <p class="section__eyebrow">Who We Are</p>
+    <h2 class="section__headline serif">
+      Philosophy in<br>every <em>pour.</em>
+    </h2>
+    <div class="quote-block">
+      <p class="quote-block__text">"Coffee was never just a drink. It was always an invitation."</p>
+      <p class="quote-block__attr">· The Cafeology Creed</p>
+    </div>
+    <p class="section__body">
+      Cafeology was born from a simple conviction: that a cup of coffee, held the right way, crafted with intention, and shared in good company, can change the tone of a day, a meeting, a life. We pair the best-tasting coffee with the spirit of philosophy, building experiences that linger long after the last sip.
+    </p>
+    <br />
+    <a href="services.html" class="btn btn--dark" style="margin-top:8px">Explore Our Services</a>
+  </div>
+</div>
+
+<!-- ═══ VALUES ═══ -->
+<section class="section section--parchment" style="padding-bottom:0">
+  <div class="container">
+    <p class="section__eyebrow" style="text-align:center">Our Values</p>
+    <h2 class="section__headline serif" style="text-align:center">What we believe in.</h2>
+  </div>
+</section>
+<div class="values-grid">
+  <div class="value-card">
+    <p class="value-card__number serif">01</p>
+    <h3 class="value-card__title serif">Quality Without Compromise</h3>
+    <p class="value-card__body">We source specialty-grade beans and ceremonial-grade matcha because your event deserves nothing less. Every cup is held to the same standard: the best tasting coffee, every single time.</p>
+  </div>
+  <div class="value-card">
+    <p class="value-card__number serif">02</p>
+    <h3 class="value-card__title serif">Philosophy &amp; Purpose</h3>
+    <p class="value-card__body">Inspired by the great thinkers, we believe a great drink opens a door. To curiosity. To connection. To conversations that matter. That philosopher at the center of our logo is not decoration. It is a compass.</p>
+  </div>
+  <div class="value-card">
+    <p class="value-card__number serif">03</p>
+    <h3 class="value-card__title serif">Community First</h3>
+    <p class="value-card__body">Every event is a gathering. Every gathering is an opportunity. Cafeology exists to give people a reason to slow down, stand together, and linger a little longer in each other's company.</p>
+  </div>
+</div>
+
+<!-- ═══ PHILOSOPHY BAND ═══ -->
+<div class="philosophy-band">
+  <div class="container">
+    <p class="philosophy-band__quote serif">"Leisure is the mother of philosophy."</p>
+    <p class="philosophy-band__attr">· Thomas Hobbes · On what happens when you slow down.</p>
+  </div>
+</div>
+
+<!-- ═══ EVENTS PREVIEW ═══ -->
+<section class="section section--parchment">
+  <div class="container">
+    <p class="section__eyebrow">Built for Every Occasion</p>
+    <h2 class="section__headline serif">We come to <em>your</em> event.</h2>
+    <p class="section__body">From intimate private gatherings to large-scale corporate events, Cafeology's mobile setup arrives fully equipped and ready to serve.</p>
+
+    <div class="events-grid">
+      <div class="event-card">
+        <div class="event-card__img">
+          <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=900&q=80"
+            alt="Corporate event" loading="lazy" />
+        </div>
+        <div class="event-card__body">
+          <h3 class="event-card__title serif">Corporate</h3>
+          <p class="event-card__desc">Energize your team. Impress your clients. Cafeology turns any business gathering into a memorable moment.</p>
+          <a href="services.html" class="btn btn--outline" style="font-size:0.75rem;padding:10px 22px">Learn More</a>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-card__img">
+          <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=900&q=80"
+            alt="Private event" loading="lazy" />
+        </div>
+        <div class="event-card__body">
+          <h3 class="event-card__title serif">Private Events</h3>
+          <p class="event-card__desc">Weddings, milestones, celebrations. Make your gathering unforgettable with a coffee and matcha experience unlike any other.</p>
+          <a href="services.html" class="btn btn--outline" style="font-size:0.75rem;padding:10px 22px">Learn More</a>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-card__img">
+          <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=900&q=80"
+            alt="Retail activation" loading="lazy" />
+        </div>
+        <div class="event-card__body">
+          <h3 class="event-card__title serif">Retail &amp; Catering</h3>
+          <p class="event-card__desc">Pop-ups, brand activations, and full catering packages. Cafeology builds community wherever you need it.</p>
+          <a href="services.html" class="btn btn--outline" style="font-size:0.75rem;padding:10px 22px">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ ═══ -->
+<section class="section section--dark" id="faq">
+  <div class="container">
+    <div class="faq-section">
+      <p class="section__eyebrow" style="text-align:center">FAQ</p>
+      <h2 class="section__headline serif" style="text-align:center;margin-bottom:52px">
+        Good questions deserve<br><em>good answers.</em>
+      </h2>
+
+      <div class="faq-item">
+        <button class="faq-btn serif">What types of events do you serve? <span class="faq-icon">+</span></button>
+        <div class="faq-answer">We specialize in corporate events, retail activations, private gatherings, weddings, and catering events. If people are coming together, we'd love to be part of it.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn serif">Do you serve both coffee and matcha? <span class="faq-icon">+</span></button>
+        <div class="faq-answer">Yes, we operate both a mobile coffee trailer and a dedicated matcha cart. They can be booked together or independently depending on your event's needs and guest count.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn serif">How far in advance should I book? <span class="faq-icon">+</span></button>
+        <div class="faq-answer">We recommend reaching out at least 4 to 6 weeks before your event to confirm availability. For larger events and peak seasons, the earlier the better. We are a popular choice, so do not wait.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn serif">Can you create a custom signature drink? <span class="faq-icon">+</span></button>
+        <div class="faq-answer">Absolutely. This is one of our favorite things to do. Whether it is a drink named after your brand, a seasonal creation, or something entirely your own, share your vision when you inquire and we will make it happen.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn serif">Can you accommodate dietary preferences? <span class="faq-icon">+</span></button>
+        <div class="faq-answer">Absolutely. We carry oat, almond, and soy milk as standard across our full menu. Decaf espresso is also available upon request. No guest should leave without a drink they love — just flag your needs when you book.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn serif">What does catering look like with Cafeology? <span class="faq-icon">+</span></button>
+        <div class="faq-answer">Our catering packages are fully mobile. We bring everything needed to serve specialty coffee and matcha at your venue. From small intimate dinners to large-scale activations, we scale to your event. Reach out to discuss your specific needs.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ BOOKING CTA ═══ -->
+<section class="section section--parchment" style="text-align:center; padding: 100px 0">
+  <div class="container">
+    <p class="section__eyebrow">Ready to Book?</p>
+    <h2 class="section__headline serif" style="max-width:600px;margin:0 auto 20px">
+      Start a conversation <em>worth remembering.</em>
+    </h2>
+    <p class="section__body" style="margin: 0 auto 40px; text-align:center">
+      Tell us about your event and we will bring the coffee, the craft, and the community directly to you.
+    </p>
+    <a href="contact.html" class="btn btn--rust">Get in Touch</a>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <div class="footer__logo">
+          <img src="assets/images/logo cafeology_Mesa de trabajo 1.png" alt="Cafeology" class="footer__logo-img" />
+          <span class="footer__logo-text serif">Cafeology</span>
+        </div>
+        <p class="footer__tagline">We do not serve coffee. We serve an experience built on craft, community, and timeless conversation.</p>
+      </div>
+      <div class="footer__col">
+        <p class="footer__col-title">Navigate</p>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <p class="footer__col-title">Services</p>
+        <ul>
+          <li><a href="coffee-trailer.html">Coffee Trailer</a></li>
+          <li><a href="matcha-cart.html">Matcha Cart</a></li>
+          <li><a href="catering.html">Catering Events</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <p class="footer__col-title">Contact</p>
+        <ul>
+          <li><a href="mailto:info@cafeologyco.com">info@cafeologyco.com</a></li>
+          <li><a href="contact.html">Book an Event</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>&copy; 2026 Cafeology Co. All rights reserved.</span>
+      <span class="footer__gold">The Nectar of Gods</span>
+      <span>Website by Blueprint Growth Marketing</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
