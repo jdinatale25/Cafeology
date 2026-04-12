@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Block redirect page from indexing (not a real page)
+Disallow: /coffee-cart.html
+
+Sitemap: https://cafeologyco.com/sitemap.xml
